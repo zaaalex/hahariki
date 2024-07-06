@@ -3,6 +3,9 @@
 namespace Bitrix\Hahariki\Controller;
 
 use Bitrix\Hahariki\Controller\Filter\CheckLobbyOwner;
+use Bitrix\Hahariki\Model\AnekdotPartTable;
+use Bitrix\Hahariki\Model\AnekdotTable;
+use Bitrix\Hahariki\Model\EO_AnekdotPart;
 use Bitrix\Hahariki\Model\SessionTable;
 use Bitrix\Hahariki\Model\SessionUserTable;
 use Bitrix\Main\Engine\CurrentUser;
@@ -74,10 +77,15 @@ class Lobby extends BaseController
 	/**
 	 * @restMethod
 	 */
-	public function enterLobbyAction(CurrentUser $lobbyOwner, int $sessionId): array
+	public function enterLobbyAction(CurrentUser $user, int $sessionId): array
 	{
+		$result = SessionUserTable::createObject()
+			?->setSessionId($sessionId)
+			->setUserId($user->getId())
+			->save();
+
 		return [
-			'test' => 'test',
+			'isEntered' => $result->isSuccess()
 		];
 	}
 
@@ -107,7 +115,7 @@ class Lobby extends BaseController
 			->where('SESSION_ID', $sessionId)
 			->fetchAll();
 
-		$ownerId = SessionTable::getById($sessionId)->fetchObject()?->get('OWNER_ID');
+		$ownerId = SessionTable::getById($sessionId)->fetchObject()?->getOwnerId();
 
 		return [
 			'players' => $userIds,
@@ -118,20 +126,36 @@ class Lobby extends BaseController
 	/**
 	 * @restMethod
 	 */
-	public function saveCategoryAction(CurrentUser $currentUser): array
+	public function saveCategoryAction(int $anekId, string $category): array
 	{
+		//TODO: проверка пользователя на то, что он в игре
+		$anek = AnekdotTable::getById($anekId)->fetchObject();
+
+		$result = $anek->setCategory($category)->save();
+
 		return [
-			'test' => 'test',
+			'result' => $result->isSuccess(),
 		];
 	}
 
 	/**
 	 * @restMethod
 	 */
-	public function savePartAction(CurrentUser $currentUser): array
+	public function savePartAction(CurrentUser $currentUser, int $anekId, string $text, int $stage): array
 	{
+		//TODO parent_part_id
+
+		$part = new EO_AnekdotPart();
+		$result = $part
+			->setAnekdotId($anekId)
+			->setText($text)
+			->setAuthorId($currentUser->getId())
+			//->setSort($stage)
+			->save()
+		;
+
 		return [
-			'test' => 'test',
+			'result' => $result->isSuccess(),
 		];
 	}
 
