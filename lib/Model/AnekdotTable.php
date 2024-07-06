@@ -1,5 +1,5 @@
 <?php
-namespace Bitrix\Hahariki;
+namespace Bitrix\Hahariki\Model;
 
 use Bitrix\Main\Localization\Loc;
 use Bitrix\Main\ORM\Data\DataManager;
@@ -20,7 +20,7 @@ use Bitrix\Main\ORM\Query\Join;
  * <li> CATEGORY string(100) optional
  * </ul>
  *
- * @package Bitrix\Hahariki
+ * @package Bitrix\Hahariki\Model
  **/
 
 class AnekdotTable extends DataManager

@@ -1,5 +1,5 @@
 <?php
-namespace Bitrix\Hahariki;
+namespace Bitrix\Hahariki\Model;
 
 use Bitrix\Main\Entity\ReferenceField;
 use Bitrix\Main\Localization\Loc;
@@ -18,7 +18,7 @@ use Bitrix\Main\UserTable;
  * <li> SESSION_ID int optional
  * </ul>
  *
- * @package Bitrix\Hahariki
+ * @package Bitrix\Hahariki\Model
  **/
 
 class SessionUserTable extends DataManager

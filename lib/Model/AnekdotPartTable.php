@@ -1,5 +1,5 @@
 <?php
-namespace Bitrix\Hahariki;
+namespace Bitrix\Hahariki\Model;
 
 use Bitrix\Main\Localization\Loc;
 use Bitrix\Main\ORM\Data\DataManager;
@@ -21,7 +21,7 @@ use Bitrix\Main\UserTable;
  * <li> PARENT_ID int optional
  * </ul>
  *
- * @package Bitrix\Hahariki
+ * @package Bitrix\Hahariki\Model
  **/
 
 class AnekdotPartTable extends DataManager

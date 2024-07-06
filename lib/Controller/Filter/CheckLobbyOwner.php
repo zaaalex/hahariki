@@ -2,7 +2,6 @@
 
 namespace Bitrix\Hahariki\Controller\Filter;
 
-use Bitrix\Intranet\Util;
 use Bitrix\Main\Context;
 use Bitrix\Main\Engine\ActionFilter\Base;
 use Bitrix\Main\Engine\CurrentUser;
@@ -37,7 +36,7 @@ class CheckLobbyOwner extends Base
 	{
 		Context::getCurrent()?->getResponse()->setStatus(403);
 		$this->addError(new Error(
-			Loc::getMessage('INTRANET_ACTIONFILTER_ALLOWED_ONLY_INTRANET_USER'),
+			Loc::getMessage('HAHARIKI_ACTIONFILTER_ALLOWED_ONLY_LOBBY_OWNER'),
 			self::ERROR_ALLOWED_ONLY_LOBBY_OWNER
 		));
 

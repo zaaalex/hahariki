@@ -1,5 +1,5 @@
 <?php
-namespace Bitrix\Hahariki;
+namespace Bitrix\Hahariki\Model;
 
 use Bitrix\Main\Localization\Loc;
 use Bitrix\Main\ORM\Data\DataManager;
@@ -12,14 +12,14 @@ use Bitrix\Main\ORM\Fields\Relations\OneToMany;
  *
  * Fields:
  * <ul>
- * <li> ID int optional
+ * <li> ID int primary
  * <li> STATUS int optional
  * <li> OWNER_ID int optional
  * <li> STAGE int optional
  * <li> END_STAGE_TIME datetime optional
  * </ul>
  *
- * @package Bitrix\Hahariki
+ * @package Bitrix\Hahariki\Model
  **/
 
 class SessionTable extends DataManager
@@ -44,7 +44,7 @@ class SessionTable extends DataManager
 		return [
 			(new IntegerField('ID',
 							  []
-			))->configureTitle(Loc::getMessage('SESSION_ENTITY_ID_FIELD'))
+			))->configureTitle(Loc::getMessage('SESSION_ENTITY_ID_FIELD')
 			,
 			(new IntegerField('STATUS',
 							  []
