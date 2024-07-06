@@ -1,4 +1,4 @@
-import { Type, Tag, Loc } from 'main.core';
+import { Type, Tag, Loc, Event } from 'main.core';
 
 type MainPageParams = {
 	userId: number,
@@ -50,15 +50,17 @@ export class MainPage
 		return node;
 	}
 
-	onReloadButtonClick(): Promise
+	async onReloadButtonClick(): void
 	{
-		return BX.ajax.runAction(
-			'bitrix:scrumtools.TaskPlacement.getBugsListGrid',
+		const lobbyId = await BX.ajax.runAction(
+			'bitrix:hahariki.Lobby.createLobby',
 			{
-				data: {},
+				data: {
+					lobbyOwner: this.#userId,
+				},
 			},
 		)
-			.then((response) => response.data.html)
+			.then((response) => response.data)
 		;
 	}
 }
