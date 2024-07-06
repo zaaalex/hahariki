@@ -71,7 +71,7 @@ class Lobby extends BaseController
 
 		return [
 			'lobbyId' => $sessionId,
-			'lobbyHref' => "/hahariki/lobby/${$sessionId}",
+			'lobbyHref' => "/hahariki/lobby/${sessionId}/",
 		];
 	}
 
