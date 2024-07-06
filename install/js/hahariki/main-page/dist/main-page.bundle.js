@@ -4,7 +4,8 @@ this.BX = this.BX || {};
 	'use strict';
 
 	let _ = t => t,
-	  _t;
+	  _t,
+	  _t2;
 	var _userId = /*#__PURE__*/babelHelpers.classPrivateFieldLooseKey("userId");
 	var _container = /*#__PURE__*/babelHelpers.classPrivateFieldLooseKey("container");
 	var _showMainPage = /*#__PURE__*/babelHelpers.classPrivateFieldLooseKey("showMainPage");
@@ -34,18 +35,22 @@ this.BX = this.BX || {};
 	    babelHelpers.classPrivateFieldLooseBase(this, _container)[_container].append(babelHelpers.classPrivateFieldLooseBase(this, _showMainPage)[_showMainPage]());
 	  }
 	  async onReloadButtonClick() {
-	    const lobbyId = await BX.ajax.runAction('bitrix:hahariki.Lobby.createLobby', {
+	    const lobbyParams = await BX.ajax.runAction('bitrix:hahariki.Lobby.createLobby', {
 	      data: {
-	        lobbyOwner: babelHelpers.classPrivateFieldLooseBase(this, _userId)[_userId]
+	        creatorId: babelHelpers.classPrivateFieldLooseBase(this, _userId)[_userId]
 	      }
 	    }).then(response => response.data);
+	    if (!main_core.Type.isNil(lobbyParams.errors)) {
+	      lobbyParams.errors.forEach(error => babelHelpers.classPrivateFieldLooseBase(this, _container)[_container].append(main_core.Tag.render(_t || (_t = _`<div>${0}</div>`), error)));
+	    }
+	    window.location.href = lobbyParams.lobbyHref;
 	  }
 	}
 	function _showMainPage2() {
 	  const {
 	    node,
 	    btn
-	  } = main_core.Tag.render(_t || (_t = _`
+	  } = main_core.Tag.render(_t2 || (_t2 = _`
 			<div class="" ref="node">
 				<button class="hahariki_create-lobby-btn button is-link is-light" ref="btn">
 					${0}

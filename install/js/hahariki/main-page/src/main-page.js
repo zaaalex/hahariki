@@ -52,15 +52,24 @@ export class MainPage
 
 	async onReloadButtonClick(): void
 	{
-		const lobbyId = await BX.ajax.runAction(
+		const lobbyParams = await BX.ajax.runAction(
 			'bitrix:hahariki.Lobby.createLobby',
 			{
 				data: {
-					lobbyOwner: this.#userId,
+					creatorId: this.#userId,
 				},
 			},
 		)
 			.then((response) => response.data)
 		;
+
+		if (!Type.isNil(lobbyParams.errors))
+		{
+			lobbyParams.errors.forEach((error: string) => this.#container.append(
+				Tag.render`<div>${error}</div>`,
+			));
+		}
+
+		window.location.href = lobbyParams.lobbyHref;
 	}
 }

@@ -4,7 +4,6 @@ namespace Bitrix\Hahariki\Controller;
 
 use Bitrix\Hahariki\Controller\Filter\CheckLobbyOwner;
 use Bitrix\Hahariki\Model\SessionTable;
-use Bitrix\Hahariki\SessionUserTable;
 use Bitrix\Main\Engine\CurrentUser;
 
 class Lobby extends BaseController
@@ -35,6 +34,7 @@ class Lobby extends BaseController
 	 * @restMethod
 	 */
 	public function createLobbyAction(CurrentUser $lobbyOwner): ?array
+
 	{
 		$session = SessionTable::createObject()
 							   ->setStatus(1)
@@ -45,11 +45,16 @@ class Lobby extends BaseController
 		$sessionId = $session->getId();
 		if (!$sessionId)
 		{
-			return null;
+			return [
+				'errors' => [
+					'Пользователь уже в лобби!'
+				]
+			];
 		}
 
 		return [
-			'sessionId' => $sessionId,
+			'lobbyId' => $sessionId,
+			'lobbyHref' => "/hahariki/lobby/${sessionId}/",
 		];
 	}
 
@@ -61,6 +66,11 @@ class Lobby extends BaseController
 		return [
 			'test' => 'test',
 		];
+	}
+
+	private function isLobbyExistByUserId(int $userId): bool
+	{
+		return false;
 	}
 
 	/**
