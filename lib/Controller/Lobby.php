@@ -102,26 +102,16 @@ class Lobby extends BaseController
 	 */
 	public function getPlayersAction(int $sessionId): array
 	{
-//		$userIds = \Bitrix\Hahariki\Model\SessionUserTable::query()
-//			->setSelect(['USER_ID'])
-//			->where(['SESSION_ID', $sessionId])
-//			->fetchAll();
-//
-//		$ownerId = SessionTable::getById($sessionId)->fetchObject()?->get('OWNER_ID');
-//
-//		return [
-//			'players' => $userIds,
-//			'ownerId' => $ownerId,
-//		];
+		$userIds = \Bitrix\Hahariki\Model\SessionUserTable::query()
+			->setSelect(['USER_ID'])
+			->where('SESSION_ID', $sessionId)
+			->fetchAll();
+
+		$ownerId = SessionTable::getById($sessionId)->fetchObject()?->get('OWNER_ID');
 
 		return [
-			'ownerId' => 1,
-			'players' => [
-				['id' => 1, 'name' => 'test1'],
-				['id' => 2, 'name' => 'test2'],
-				['id' => 3, 'name' => 'test3'],
-				['id' => 4, 'name' => 'test4'],
-			],
+			'players' => $userIds,
+			'ownerId' => $ownerId,
 		];
 	}
 
