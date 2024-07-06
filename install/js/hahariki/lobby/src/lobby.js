@@ -1,6 +1,7 @@
 import { Type, Tag } from 'main.core';
 import { SecondStage } from './secondStage';
 import { Start } from './start';
+import { ThirdStage } from './thirdStage';
 
 type LobbyPageParams = {
 	container: HTMLElement,
@@ -56,8 +57,9 @@ export class Lobby
 				content = second.render();
 				break;
 			case 3:
-				// eslint-disable-next-line no-unused-vars
-				content = null;
+				// eslint-disable-next-line no-unused-vars,no-case-declarations
+				const third = new ThirdStage();
+				content = third.render();
 				break;
 		}
 

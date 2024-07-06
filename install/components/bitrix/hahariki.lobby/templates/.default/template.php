@@ -19,6 +19,14 @@ $APPLICATION->SetPageProperty(
 );
 ?>
 
+<div>
+	<?php foreach ($arResult as $key => $item)
+		{
+			echo 'key' . $key . '    ' . 'item ' . $item;
+		}
+	?>
+</div>
+
 <div id="hahariki-game-lobby"></div>
 
 <script>

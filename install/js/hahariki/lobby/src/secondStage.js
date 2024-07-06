@@ -1,19 +1,32 @@
-import { Tag } from 'main.core';
+import { Event, Tag } from 'main.core';
+import { Lobby } from './lobby';
 
 export class SecondStage
 {
 	render(): HTMLElement
 	{
 		const { node, btn } = Tag.render`
-			<form ref="node">
-				<label for="category">
-					Введите категорю
-				</label>
-				<input id="category" type="text">
-				<button ref="btn">Отправить</button>
-			</form>
+			<div class="hahariki__input-container" ref="node">
+				<input class="hahariki_input input" id="category" type="text" placeholder="Введите категорию">
+				<button class="button is-info" ref="btn">Отправить</button>
+			</div>
 		`;
 
+		Event.bind(
+			btn,
+			'click',
+			this.#renderThirdStage.bind(this),
+		);
+
 		return node;
+	}
+
+	#renderThirdStage()
+	{
+		const lobby = new Lobby({
+			container: document.getElementById('hahariki-game-lobby'),
+		});
+
+		lobby.show(3);
 	}
 }

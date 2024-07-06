@@ -1,5 +1,9 @@
 @import "https://cdn.jsdelivr.net/npm/bulma@1.0.1/css/bulma.min.css";
 
+button {
+	color: #fff !important;
+}
+
 .project-modifier__darkened {
 	opacity: 0.5;
 }
@@ -9,11 +13,9 @@
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-
 	background-image: url('../../images/confetti.svg');
 	background-repeat: no-repeat, no-repeat;
 	background-size: 100%, cover;
-
 	width: 100%;
 	min-height: 300px;
 }
@@ -42,4 +44,32 @@
 	height: 100%;
 	display: flex;
 	justify-content: center;
+	align-items: center;
+}
+
+.hahariki_input {
+	background-color: #fff;
+}
+
+.hahariki_input::placeholder {
+	color: #000;
+}
+
+.hahariki_input:focus {
+	color: #000;
+}
+
+.hahariki_lobby {
+	margin-top: 23%;
+	display: flex;
+	width: 100%;
+	height: 100%;
+	align-items: center;
+	justify-content: center;
+}
+
+.hahariki__input-container {
+	display: flex;
+	width: 40%;
+	height: 100%;
 }

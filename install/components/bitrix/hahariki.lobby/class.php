@@ -32,7 +32,42 @@ class HaharikiMainPage extends CBitrixComponent
 			return;
 		}
 
+		$this->arResult = $this->getLobbyData();
+
 		$this->includeComponentTemplate();
+	}
+
+	private function getLobbyData(): array
+	{
+		$userId = \Bitrix\Main\Engine\CurrentUser::get()->getId();
+
+		$sessionUserEntity = \Bitrix\Hahariki\Model\SessionUserTable::query()
+			->setSelect(['SESSION_ID'])
+			->where('USER_ID', $userId)
+			->setLimit(1)
+			->fetchObject()
+		;
+
+		if (is_null($sessionUserEntity))
+		{
+			return [];
+		}
+
+		$sessionId = $sessionUserEntity->getSessionId();
+
+		if (is_null($sessionId))
+		{
+			return [];
+		}
+
+		$session = \Bitrix\Hahariki\Model\SessionTable::getById($sessionId)->fetchObject();
+
+		return [
+			'status' => $session->getStatus(),
+			'ownerId' => $session->getOwnerId(),
+			'sessionId' => $sessionId,
+			'stage' => $session->getStage(),
+		];
 	}
 
 	/**
