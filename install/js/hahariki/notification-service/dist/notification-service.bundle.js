@@ -89,5 +89,5 @@ this.BX = this.BX || {};
 
 	exports.NotificationService = NotificationService;
 
-}((this.BX.ScrumTools = this.BX.ScrumTools || {}),BX));
+}((this.BX.Hahariki = this.BX.Hahariki || {}),BX));
 //# sourceMappingURL=notification-service.bundle.js.map

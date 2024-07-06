@@ -8,7 +8,7 @@ return [
 	'css' => 'dist/project-modifier.bundle.css',
 	'js' => 'dist/project-modifier.bundle.js',
 	'rel' => [
-		'hahariki.notification-service',
+		'scrumtools.notification-service',
 		'main.core.events',
 		'ui.entity-selector',
 		'main.loader',
