@@ -20,7 +20,20 @@ use Bitrix\Main\ORM\Fields\Relations\OneToMany;
  * </ul>
  *
  * @package Bitrix\Hahariki\Model
- **/
+ *
+ * DO NOT WRITE ANYTHING BELOW THIS
+ *
+ * <<< ORMENTITYANNOTATION
+ * @method static EO_Session_Query query()
+ * @method static EO_Session_Result getByPrimary($primary, array $parameters = [])
+ * @method static EO_Session_Result getById($id)
+ * @method static EO_Session_Result getList(array $parameters = [])
+ * @method static EO_Session_Entity getEntity()
+ * @method static \Bitrix\Hahariki\Model\EO_Session createObject($setDefaultValues = true)
+ * @method static \Bitrix\Hahariki\Model\EO_Session_Collection createCollection()
+ * @method static \Bitrix\Hahariki\Model\EO_Session wakeUpObject($row)
+ * @method static \Bitrix\Hahariki\Model\EO_Session_Collection wakeUpCollection($rows)
+ */
 
 class SessionTable extends DataManager
 {
