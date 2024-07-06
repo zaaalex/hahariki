@@ -2,9 +2,8 @@
 
 namespace Bitrix\Hahariki\Controller;
 
-use Bitrix\Hahariki\Controller\BaseController;
 use Bitrix\Hahariki\Controller\Filter\CheckLobbyOwner;
-use Bitrix\Main\Engine\AutoWire\ExactParameter;
+use Bitrix\Hahariki\Model\SessionTable;
 use Bitrix\Main\Engine\CurrentUser;
 
 class Lobby extends BaseController
@@ -48,7 +47,7 @@ class Lobby extends BaseController
 		$data = [
 			'fields' => [
 				'STATUS' => 1,
-				'OWNER_ID' => $creatorId->getId(),
+				'OWNER_ID' => $creatorId,
 				'STAGE' => 0,
 			]
 		];
@@ -56,7 +55,7 @@ class Lobby extends BaseController
 		$sessionId = SessionTable::add($data)->getId();
 		\Bitrix\Hahariki\Model\SessionUserTable::add([
 			'fields' => [
-				'USER_ID' => $creatorId->getId(),
+				'USER_ID' => $creatorId,
 				'SESSION_ID' => $sessionId,
 			],
 		]);
