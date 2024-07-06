@@ -34,10 +34,10 @@ class Lobby extends BaseController
 	/**
 	 * @restMethod
 	 */
-	public function createLobbyAction(CurrentUser $lobbyOwner): array
+	public function createLobbyAction(int $lobbyOwner): array
 	{
 		return [
-			'test' => 'test',
+			'lobbyId' => 1,
 		];
 	}
 

@@ -33,10 +33,12 @@ this.BX = this.BX || {};
 	  show() {
 	    babelHelpers.classPrivateFieldLooseBase(this, _container)[_container].append(babelHelpers.classPrivateFieldLooseBase(this, _showMainPage)[_showMainPage]());
 	  }
-	  onReloadButtonClick() {
-	    return BX.ajax.runAction('bitrix:scrumtools.TaskPlacement.getBugsListGrid', {
-	      data: {}
-	    }).then(response => response.data.html);
+	  async onReloadButtonClick() {
+	    const lobbyId = await BX.ajax.runAction('bitrix:hahariki.Lobby.createLobby', {
+	      data: {
+	        lobbyOwner: babelHelpers.classPrivateFieldLooseBase(this, _userId)[_userId]
+	      }
+	    }).then(response => response.data);
 	  }
 	}
 	function _showMainPage2() {
@@ -50,7 +52,7 @@ this.BX = this.BX || {};
 				</button>
 			</div>
 		`), main_core.Loc.getMessage('HAHARIKI__CREATE_BTN_TEXT'));
-	  Event.bind(btn, 'click', this.onReloadButtonClick.bind(this));
+	  main_core.Event.bind(btn, 'click', this.onReloadButtonClick.bind(this));
 	  return node;
 	}
 
