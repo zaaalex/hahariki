@@ -17,7 +17,20 @@ use Bitrix\Main\UserTable;
  * </ul>
  *
  * @package Bitrix\Hahariki\Model
- **/
+ *
+ * DO NOT WRITE ANYTHING BELOW THIS
+ *
+ * <<< ORMENTITYANNOTATION
+ * @method static EO_SessionUser_Query query()
+ * @method static EO_SessionUser_Result getByPrimary($primary, array $parameters = [])
+ * @method static EO_SessionUser_Result getById($id)
+ * @method static EO_SessionUser_Result getList(array $parameters = [])
+ * @method static EO_SessionUser_Entity getEntity()
+ * @method static \Bitrix\Hahariki\Model\EO_SessionUser createObject($setDefaultValues = true)
+ * @method static \Bitrix\Hahariki\Model\EO_SessionUser_Collection createCollection()
+ * @method static \Bitrix\Hahariki\Model\EO_SessionUser wakeUpObject($row)
+ * @method static \Bitrix\Hahariki\Model\EO_SessionUser_Collection wakeUpCollection($rows)
+ */
 
 class SessionUserTable extends DataManager
 {
