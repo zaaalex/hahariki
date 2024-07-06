@@ -32,4 +32,7 @@ CREATE TABLE b_hahariki_anekdot_part
 	TEXT varchar(200),
 	AUTHOR_ID int,
 	PARENT_ID int NULL
-)
+);
+
+ALTER TABLE b_hahariki_anekdot_part
+ADD ANEKDOT_ID int;
