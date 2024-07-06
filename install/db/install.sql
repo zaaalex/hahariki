@@ -1,10 +1,11 @@
 CREATE TABLE b_hahariki_session
 (
-	ID int,
+	ID int auto_increment,
 	STATUS int,
 	OWNER_ID int,
 	STAGE int,
-	END_STAGE_TIME timestamp
+	END_STAGE_TIME timestamp,
+	primary key (ID)
 );
 
 CREATE TABLE b_hahariki_session_user
@@ -15,23 +16,26 @@ CREATE TABLE b_hahariki_session_user
 
 CREATE TABLE b_hahariki_session_status
 (
-	ID int,
-	TITLE varchar(20)
+	ID int auto_increment,
+	TITLE varchar(20),
+	primary key (ID)
 );
 
 CREATE TABLE b_hahariki_anekdot
 (
-	ID int,
+	ID int auto_increment,
 	SESSION_ID int,
-	CATEGORY varchar(100)
+	CATEGORY varchar(100),
+	primary key (ID)
 );
 
 CREATE TABLE b_hahariki_anekdot_part
 (
-	ID int,
+	ID int auto_increment,
 	TEXT varchar(200),
 	AUTHOR_ID int,
-	PARENT_ID int NULL
+	PARENT_ID int NULL,
+	primary key (ID)
 );
 
 ALTER TABLE b_hahariki_anekdot_part
