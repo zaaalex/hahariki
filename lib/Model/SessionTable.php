@@ -68,7 +68,12 @@ class SessionTable extends DataManager
 				'ANEKDOT',
 				AnekdotTable::class,
 				'SESSION',
-			))
+			)),
+			(new OneToMany(
+				'USER',
+				SessionUserTable::class,
+				'SESSION'
+			 )),
 
 		];
 	}
