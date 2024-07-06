@@ -46,6 +46,8 @@ class AnekdotTable extends DataManager
 			(new IntegerField('ID',
 							  []
 			))->configureTitle(Loc::getMessage('ANEKDOT_ENTITY_ID_FIELD'))
+				->configurePrimary(true)
+				->configureAutocomplete(true)
 			,
 			(new IntegerField('SESSION_ID',
 							  []

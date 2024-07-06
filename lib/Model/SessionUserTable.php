@@ -44,6 +44,7 @@ class SessionUserTable extends DataManager
 			(new IntegerField('USER_ID',
 							  []
 			))->configureTitle(Loc::getMessage('SESSION_USER_ENTITY_USER_ID_FIELD'))
+				->configurePrimary(true)
 			,
 			(new ReferenceField(
 				'USER',
@@ -53,6 +54,7 @@ class SessionUserTable extends DataManager
 			(new IntegerField('SESSION_ID',
 							  []
 			))->configureTitle(Loc::getMessage('SESSION_USER_ENTITY_SESSION_ID_FIELD'))
+				->configurePrimary(true)
 			,
 			(new ReferenceField(
 				'SESSION',

@@ -11,7 +11,8 @@ CREATE TABLE b_hahariki_session
 CREATE TABLE b_hahariki_session_user
 (
 	USER_ID int,
-	SESSION_ID int
+	SESSION_ID int,
+	primary key (USER_ID, SESSION_ID)
 );
 
 CREATE TABLE b_hahariki_session_status

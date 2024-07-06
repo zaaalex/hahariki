@@ -42,6 +42,8 @@ class SessionStatusTable extends DataManager
 			(new IntegerField('ID',
 							  []
 			))->configureTitle(Loc::getMessage('SESSION_STATUS_ENTITY_ID_FIELD'))
+				->configurePrimary(true)
+				->configureAutocomplete(true)
 			,
 			(new StringField('TITLE',
 							 [
