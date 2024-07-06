@@ -44,7 +44,7 @@ class SessionTable extends DataManager
 		return [
 			(new IntegerField('ID',
 							  []
-			))->configureTitle(Loc::getMessage('SESSION_ENTITY_ID_FIELD')
+			))->configureTitle(Loc::getMessage('SESSION_ENTITY_ID_FIELD'))
 			,
 			(new IntegerField('STATUS',
 							  []
