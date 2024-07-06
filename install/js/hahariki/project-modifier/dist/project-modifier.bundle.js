@@ -277,5 +277,5 @@ this.BX = this.BX || {};
 
 	exports.ProjectModifier = ProjectModifier;
 
-}((this.BX.ScrumTools = this.BX.ScrumTools || {}),BX.ScrumTools,BX.Event,BX.UI.EntitySelector,BX,BX.UI,BX.UI.Dialogs,BX));
+}((this.BX.Hahariki = this.BX.Hahariki || {}),BX,BX.Event,BX.UI.EntitySelector,BX,BX.UI,BX.UI.Dialogs,BX));
 //# sourceMappingURL=project-modifier.bundle.js.map

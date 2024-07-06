@@ -2,7 +2,9 @@
 
 namespace Bitrix\Hahariki\Controller;
 
-abstract class BaseController
+use Bitrix\Main\Engine\Controller;
+
+abstract class BaseController extends Controller
 {
 
 }

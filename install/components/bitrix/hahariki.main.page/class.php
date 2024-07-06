@@ -1,5 +1,6 @@
 <?php
 
+use Bitrix\Intranet\CurrentUser;
 use Bitrix\Main\Loader;
 use Bitrix\Main\Localization\Loc;
 
@@ -26,6 +27,7 @@ class HaharikiMainPage extends CBitrixComponent
 	public function executeComponent(): void
 	{
 		$this->application->setTitle(Loc::getMessage('SCRUMTOOLS_PROJECT_MODIFIER_TITLE'));
+		$this->arResult['userId'] = CurrentUser::get()->getId();
 
 		if (!Loader::includeModule('hahariki'))
 		{

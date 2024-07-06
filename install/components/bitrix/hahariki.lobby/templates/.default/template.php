@@ -7,7 +7,7 @@ if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
 	die();
 }
 
-Extension::load(['hahariki.project-modifier', 'ui.hint', 'ui.notification']);
+Extension::load(['hahariki.lobby', 'ui.hint', 'ui.notification']);
 
 /** @var $APPLICATION CMain */
 
@@ -19,18 +19,14 @@ $APPLICATION->SetPageProperty(
 );
 ?>
 
-<div class="scrum-tools__project-modifier-container">
-	<div class="scrum-tools__notifications" id="scrum-tools-notifications"></div>
-	<div class="scrum-tools__project-modifier-form" id="project-modifier-form"></div>
-</div>
+<div id="hahariki-game-lobby"></div>
 
 <script>
 	BX.ready(function() {
-		const mainPage = new BX.Hahariki.MainPage({
-			container: document.getElementById('project-modifier-form'),
-			notificationContainer: document.getElementById('scrum-tools-notifications')
+		const lobby = new BX.Hahariki.Lobby({
+			container: document.getElementById('hahariki-game-create'),
 		});
 
-        mainPage.showForm();
+        lobby.showForm();
 	});
 </script>
