@@ -36,6 +36,14 @@ class Lobby extends BaseController
 	public function createLobbyAction(CurrentUser $lobbyOwner): ?array
 
 	{
+		if ($this->isLobbyExistByUserId($lobbyOwner->getId()))
+		{
+			return [
+				'errors' => [
+					'Пользователь уже в лобби!'
+				]
+			];
+		}
 		$session = SessionTable::createObject()
 							   ->setStatus(1)
 							   ->setOwnerId($lobbyOwner->getId())
