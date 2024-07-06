@@ -1,0 +1,37 @@
+.scrum-tools__error-hint {
+	margin: 5px;
+	overflow: auto;
+	-webkit-transition: max-height .3s;
+	-moz-transition: max-height .3s;
+}
+
+.scrum-tools__error-hint-cross {
+	min-width: 160px;
+	min-height: 10px;
+	position: relative;
+	padding: 10px 24px 10px 14px;
+	background-color: #ffd1d1;
+	border-bottom: 3px solid transparent;
+	border-radius: var(--ui-border-radius-md);
+	color: #525C69;
+	font: 13px/17px var(--ui-font-family-secondary, var(--ui-font-family-open-sans));
+	font-weight: var(--ui-font-weight-regular, 400);
+	text-align: center;
+}
+
+.scrum-tools__error {
+	position: relative;
+	overflow: auto;
+	padding: 10px 24px 10px 14px;
+	margin: 5px;
+	background-color: #ffd1d1;
+	border-bottom: 3px solid transparent;
+	border-radius: var(--ui-border-radius-md);
+	color: #525C69;
+	font: 13px/17px var(--ui-font-family-secondary, var(--ui-font-family-open-sans));
+	font-weight: var(--ui-font-weight-regular, 400);
+	min-width: 160px;
+	max-width: 700px;
+	min-height: 20px;
+	max-height: 20px;
+}

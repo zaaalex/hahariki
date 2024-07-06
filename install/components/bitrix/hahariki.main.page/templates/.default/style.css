@@ -1,0 +1,30 @@
+.project-modifier__darkened {
+	opacity: 0.5;
+}
+
+.scrum-tools__project-modifier-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+
+	background-image: url('../../images/confetti.svg');
+	background-repeat: no-repeat, no-repeat;
+	background-size: 100%, cover;
+
+	width: 100%;
+	min-height: 300px;
+}
+
+.scrum-tools__project-modifier-form {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.scrum-tools__notifications {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	margin-bottom: 30px;
+}
