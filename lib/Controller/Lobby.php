@@ -141,18 +141,23 @@ class Lobby extends BaseController
 	/**
 	 * @restMethod
 	 */
-	public function savePartAction(CurrentUser $currentUser, int $anekId, string $text, int $stage): array
+	public function savePartAction(CurrentUser $currentUser, int $anekId, string $text, int $stage, ?int $parentPartId): array
 	{
-		//TODO parent_part_id
 
 		$part = new EO_AnekdotPart();
-		$result = $part
+		$part
 			->setAnekdotId($anekId)
 			->setText($text)
 			->setAuthorId($currentUser->getId())
-			//->setSort($stage)
-			->save()
+			->setSort($stage)
 		;
+
+		if ($stage > 1 && !is_null($parentPartId))
+		{
+			$part->setParentId($parentPartId);
+		}
+
+		$result = $part->save();
 
 		return [
 			'result' => $result->isSuccess(),
