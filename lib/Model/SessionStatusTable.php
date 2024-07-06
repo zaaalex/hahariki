@@ -17,7 +17,20 @@ use Bitrix\Main\ORM\Fields\Validators\LengthValidator;
  * </ul>
  *
  * @package Bitrix\Hahariki\Model
- **/
+ *
+ * DO NOT WRITE ANYTHING BELOW THIS
+ *
+ * <<< ORMENTITYANNOTATION
+ * @method static EO_SessionStatus_Query query()
+ * @method static EO_SessionStatus_Result getByPrimary($primary, array $parameters = [])
+ * @method static EO_SessionStatus_Result getById($id)
+ * @method static EO_SessionStatus_Result getList(array $parameters = [])
+ * @method static EO_SessionStatus_Entity getEntity()
+ * @method static \Bitrix\Hahariki\Model\EO_SessionStatus createObject($setDefaultValues = true)
+ * @method static \Bitrix\Hahariki\Model\EO_SessionStatus_Collection createCollection()
+ * @method static \Bitrix\Hahariki\Model\EO_SessionStatus wakeUpObject($row)
+ * @method static \Bitrix\Hahariki\Model\EO_SessionStatus_Collection wakeUpCollection($rows)
+ */
 
 class SessionStatusTable extends DataManager
 {
