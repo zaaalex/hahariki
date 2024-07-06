@@ -9,6 +9,8 @@ use Bitrix\Hahariki\Model\EO_AnekdotPart;
 use Bitrix\Hahariki\Model\SessionTable;
 use Bitrix\Hahariki\Model\SessionUserTable;
 use Bitrix\Main\Engine\CurrentUser;
+use Bitrix\Main\EO_User_Collection;
+use Bitrix\Main\UserTable;
 
 class Lobby extends BaseController
 {
@@ -115,10 +117,26 @@ class Lobby extends BaseController
 			->where('SESSION_ID', $sessionId)
 			->fetchAll();
 
+		$users = UserTable::query()
+			->setSelect(['NAME', 'LAST_NAME'])
+			->whereIn('ID', [$userIds])
+			->fetchCollection()
+		;
+
+		$players = [];
+		foreach ($users as $user)
+		{
+			$players[] = [
+				'id' => $user->getId(),
+				'name' => $user->getName(),
+				'lastName' => $user->getLastName(),
+			];
+		}
+
 		$ownerId = SessionTable::getById($sessionId)->fetchObject()?->getOwnerId();
 
 		return [
-			'players' => $userIds,
+			'players' => $players,
 			'ownerId' => $ownerId,
 		];
 	}
