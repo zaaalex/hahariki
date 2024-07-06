@@ -21,7 +21,20 @@ use Bitrix\Main\ORM\Query\Join;
  * </ul>
  *
  * @package Bitrix\Hahariki\Model
- **/
+ *
+ * DO NOT WRITE ANYTHING BELOW THIS
+ *
+ * <<< ORMENTITYANNOTATION
+ * @method static EO_Anekdot_Query query()
+ * @method static EO_Anekdot_Result getByPrimary($primary, array $parameters = [])
+ * @method static EO_Anekdot_Result getById($id)
+ * @method static EO_Anekdot_Result getList(array $parameters = [])
+ * @method static EO_Anekdot_Entity getEntity()
+ * @method static \Bitrix\Hahariki\Model\EO_Anekdot createObject($setDefaultValues = true)
+ * @method static \Bitrix\Hahariki\Model\EO_Anekdot_Collection createCollection()
+ * @method static \Bitrix\Hahariki\Model\EO_Anekdot wakeUpObject($row)
+ * @method static \Bitrix\Hahariki\Model\EO_Anekdot_Collection wakeUpCollection($rows)
+ */
 
 class AnekdotTable extends DataManager
 {
@@ -57,6 +70,7 @@ class AnekdotTable extends DataManager
 				'SESSION',
 				SessionTable::class,
 				Join::on('this.SESSION_ID', 'ref.ID')))
+			,
 			(new StringField('CATEGORY',
 							 [
 								 'validation' => function()

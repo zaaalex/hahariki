@@ -22,7 +22,20 @@ use Bitrix\Main\UserTable;
  * </ul>
  *
  * @package Bitrix\Hahariki\Model
- **/
+ *
+ * DO NOT WRITE ANYTHING BELOW THIS
+ *
+ * <<< ORMENTITYANNOTATION
+ * @method static EO_AnekdotPart_Query query()
+ * @method static EO_AnekdotPart_Result getByPrimary($primary, array $parameters = [])
+ * @method static EO_AnekdotPart_Result getById($id)
+ * @method static EO_AnekdotPart_Result getList(array $parameters = [])
+ * @method static EO_AnekdotPart_Entity getEntity()
+ * @method static \Bitrix\Hahariki\Model\EO_AnekdotPart createObject($setDefaultValues = true)
+ * @method static \Bitrix\Hahariki\Model\EO_AnekdotPart_Collection createCollection()
+ * @method static \Bitrix\Hahariki\Model\EO_AnekdotPart wakeUpObject($row)
+ * @method static \Bitrix\Hahariki\Model\EO_AnekdotPart_Collection wakeUpCollection($rows)
+ */
 
 class AnekdotPartTable extends DataManager
 {
@@ -78,11 +91,13 @@ class AnekdotPartTable extends DataManager
 							AnekdotTable::class,
 							Join::on('this.ANEKDOT_ID', 'ref.ID')
 			))
+			,
 			(new Reference(
 				'AUTHOR',
 				UserTable::class,
 				Join::on('this.AUTHOR_ID', 'ref.ID')
 			 ))
+			,
 		];
 	}
 }

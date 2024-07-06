@@ -4,6 +4,7 @@ namespace Bitrix\Hahariki\Controller;
 
 use Bitrix\Hahariki\Controller\Filter\CheckLobbyOwner;
 use Bitrix\Hahariki\Model\SessionTable;
+use Bitrix\Hahariki\Model\SessionUserTable;
 use Bitrix\Main\Engine\CurrentUser;
 
 class Lobby extends BaseController
@@ -45,12 +46,16 @@ class Lobby extends BaseController
 			];
 		}
 		$session = SessionTable::createObject()
-							   ->setStatus(1)
+							   ?->setStatus(1)
 							   ->setOwnerId($lobbyOwner->getId())
 							   ->setStage(0)
 		;
 		$session->save();
 		$sessionId = $session->getId();
+		SessionUserTable::createObject()
+								   ?->setSessionId($sessionId)
+								   ->setUserId($lobbyOwner->getId())
+									->save();
 		if (!$sessionId)
 		{
 			return [
