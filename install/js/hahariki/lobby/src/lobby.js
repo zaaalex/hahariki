@@ -1,4 +1,6 @@
 import { Type, Tag } from 'main.core';
+import { SecondStage } from './secondStage';
+import { Start } from './start';
 
 type LobbyPageParams = {
 	container: HTMLElement,
@@ -13,22 +15,52 @@ export class Lobby
 			throw new Error('HTMLElement for render not found');
 		}
 
+		// eslint-disable-next-line no-param-reassign
+		params.container.innerHTML = '';
+
 		this.#container = params.container;
 	}
 
-	show(): void
+	show(stage): void
 	{
-		this.#container.append(this.#showLobbyPage());
+		this.#container.append(this.#showLobbyPage(stage));
 	}
 
-	#showLobbyPage(): HTMLElement
+	#showLobbyPage(stage): HTMLElement
 	{
 		const { node } = Tag.render`
 			<div class="hahariki_lobby" ref="node">
-				Lobby
+				${this.#render(stage)}
 			</div>
 		`;
 
 		return node;
+	}
+
+	#render(stage): HTMLElement
+	{
+		let content = null;
+
+		// eslint-disable-next-line default-case
+		// eslint-disable-next-line no-case-declarations,default-case
+		switch (stage)
+		{
+			case 1:
+				// eslint-disable-next-line no-case-declarations
+				const start = new Start();
+				content = start.renderBtnStart();
+				break;
+			case 2:
+				// eslint-disable-next-line no-case-declarations
+				const second = new SecondStage();
+				content = second.render();
+				break;
+			case 3:
+				// eslint-disable-next-line no-unused-vars
+				content = null;
+				break;
+		}
+
+		return content;
 	}
 }

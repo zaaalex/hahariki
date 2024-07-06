@@ -24,9 +24,10 @@ $APPLICATION->SetPageProperty(
 <script>
 	BX.ready(function() {
 		const lobby = new BX.Hahariki.Lobby({
-			container: document.getElementById('hahariki-game-create'),
+			container: document.getElementById('hahariki-game-lobby'),
+			stage: 1
 		});
 
-        lobby.showForm();
+        lobby.show(1);
 	});
 </script>
