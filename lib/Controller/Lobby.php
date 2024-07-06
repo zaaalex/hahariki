@@ -36,22 +36,13 @@ class Lobby extends BaseController
 	 */
 	public function createLobbyAction(CurrentUser $lobbyOwner): ?array
 	{
-		$data = [
-			'fields' => [
-				'STATUS' => 1,
-				'OWNER_ID' => $lobbyOwner->getId(),
-				'STAGE' => 0,
-			]
-		];
-
-		$sessionId = SessionTable::add($data)->getId();
-		\Bitrix\Hahariki\Model\SessionUserTable::add([
-			'fields' => [
-				'USER_ID' => $lobbyOwner->getId(),
-				'SESSION_ID' => $sessionId,
-			],
-		]);
-
+		$session = SessionTable::createObject()
+							   ->setStatus(1)
+							   ->setOwnerId($lobbyOwner->getId())
+							   ->setStage(0)
+		;
+		$session->save();
+		$sessionId = $session->getId();
 		if (!$sessionId)
 		{
 			return null;
