@@ -41,3 +41,6 @@ CREATE TABLE b_hahariki_anekdot_part
 
 ALTER TABLE b_hahariki_anekdot_part
 ADD ANEKDOT_ID int;
+
+ALTER TABLE b_hahariki_anekdot_part
+	ADD SORT int;

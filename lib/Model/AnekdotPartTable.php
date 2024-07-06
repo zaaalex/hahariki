@@ -86,6 +86,10 @@ class AnekdotPartTable extends DataManager
 							  []
 			))->configureTitle(Loc::getMessage('ANEKDOT_PART_ENTITY_ANEKDOT_ID_FIELD'))
 			,
+			(new IntegerField('SORT',
+							  []
+			))->configureTitle(Loc::getMessage('ANEKDOT_PART_ENTITY_SORT_FIELD'))
+			,
 			(new Reference(
 							'ANEKDOT',
 							AnekdotTable::class,
